@@ -1,16 +1,60 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .code-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .code {
+            width: 40px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h1 id="verification_heading">Verify Your Account</h1>
+    <p id="verification_subtext">Please enter the 6-digit OTP sent to your registered mobile number.</p>
+    
+    <div class="code-container">
+        <input type="text" maxlength="1" class="code" id="code-1" autofocus>
+        <input type="text" maxlength="1" class="code" id="code-2">
+        <input type="text" maxlength="1" class="code" id="code-3">
+        <input type="text" maxlength="1" class="code" id="code-4">
+        <input type="text" maxlength="1" class="code" id="code-5">
+        <input type="text" maxlength="1" class="code" id="code-6">
+    </div>
 
+    <script>
+        const codes = document.querySelectorAll('.code');
+        
+        codes.forEach((code, index) => {
+            code.addEventListener('input', (e) => {
+                if (e.inputType === 'insertText' && index < codes.length - 1) {
+                    codes[index + 1].focus();
+                }
+            });
+            
+            code.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && index > 0 && !code.value) {
+                    codes[index - 1].focus();
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
