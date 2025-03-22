@@ -38,23 +38,5 @@
         <input type="text" maxlength="1" class="code" id="code-5">
         <input type="text" maxlength="1" class="code" id="code-6">
     </div>
-
-    <script>
-        const codes = document.querySelectorAll('.code');
-codes.forEach((code, index) => {
-    code.addEventListener('input', (e) => {
-        if (e.inputType === 'insertText' && index < codes.length - 1) {
-            codes[index + 1].focus();
-        }
-    });
-
-    code.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && index > 0) {
-            e.preventDefault();
-            codes[index - 1].focus();
-        }
-    });
-});
-    </script>
 </body>
 </html>
